@@ -2,7 +2,7 @@
 
 demo of picow btferret bluetooth hid keyboard,
 
-uses pause and skip add for youtube
+uses pause and skip ad for youtube
 
 youtube demo -----> https://www.youtube.com/watch?v=DicF09l6McY
 
