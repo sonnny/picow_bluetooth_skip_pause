@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.13)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(PICO_BOARD "pico_w")
+include("/opt/pico-sdk/external/pico_sdk_import.cmake")
+project(main C CXX ASM)
+pico_sdk_init()
+add_compile_definitions(CYW43_ENABLE_BLUETOOTH=1)
+add_executable(main main.c ble/picostack.c ble/btlibp.c)
+target_compile_definitions(main PRIVATE PICO_STACK_SIZE=4096)
+target_link_libraries(main
+  pico_stdlib
+  pico_cyw43_arch_none)
+pico_enable_stdio_usb(main 1)
+target_include_directories(main PUBLIC ble)
+pico_add_extra_outputs(main)
